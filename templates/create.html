@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>sol-gen</title>
+   
+</head>
+<style>
+    .top{
+        background-color: lightblue;
+        height:100px;
+        }
+        .heading{
+            padding-top: 1.2%;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 40px;;
+        }
+        .probhead{
+            margin-top:2%;
+            width: 100%;
+            margin-left: 20%;
+            
+        }
+        .smallinp{
+            border-radius: 5px;
+           
+            width:20%;
+            height:40px;
+            text-align: center;
+
+        }
+        .largeinp{
+            border-radius: 5px;
+            
+            width:60%;
+            height:120px;
+            text-align: center;
+
+        }
+        ::placeholder{
+            text-align: center;
+            font-size: 15px;
+        }
+        .dificulty{
+            margin-top: 2%;
+            margin-left: 20%;
+        }
+        .inputsec{
+            margin-top: 2%;
+            border-style: solid;
+            border-color: black;
+            width:60%;
+            height: 300px;
+        }
+      .probstate{
+          margin-top: 2%;
+          
+      }
+      .inputs{
+        margin-top: 1.25%;
+        border-radius: 5px;
+        width:60%;
+        height:40px;
+      }
+      .exp{
+          margin-left:20%;
+          margin-top: 2%;
+          font-size: 40px;
+      }
+      .exp1{
+        font-size: 40px;
+      }
+      .rod{
+          margin-left: 5%;
+      }
+      input{
+          text-align: center;
+      }
+      .btnx{
+         margin-left: 55%;
+      }
+      .btny{
+          margin-left: 1%;
+      }
+      .par{
+          margin-top:3%;
+      }
+</style>
+<body>
+    <nav class="top">
+        <center><div class="heading">Solmate Solution Generator</div></center>
+    </nav>
+    
+    <div class="probhead"><input class="smallinp" placeholder="Title of the problem" required/></div>
+    <center>
+    <div class="probstate"><input class="largeinp"  placeholder="Statement of the problem" required/></div></center>
+    <div class="dificulty">
+       <p class="exp1"> Select Difficulty  </p> <input type='radio' name="rad" class="rod" required> Easy   <input type='radio' class="rod" name="rad"> Medium    <input type='radio' class="rod" name="rad"> Hard
+    </div>
+    <span><p class="exp">Examples<button class="btn btnx btn-danger" onclick="addexample()">+</button><button class="btny btn btn-primary" onclick="deleteexample()">-</button></p></span>
+    <center>
+    <div id="totinps">
+    <div class="inputsec" id="inps">
+        
+        <p class="par">Example Goes Here</p>
+        <input type="text" class="inputs" placeholder="Enter Example input"><br>
+        <input type="text" class="inputs"  placeholder="Enter Example output"><br>
+        <input type="text" class="inputs"  placeholder="Enter Example Explanation"><br>
+
+        
+    </div>
+</div>
+    </center>
+    
+    <!-- <center>
+        <div class="inputsec">
+            <p class="par">Example 2 Goes Here</p>
+            <input type="text" class="inputs" placeholder="Enter Example 2 input"><br>
+            <input type="text" class="inputs"  placeholder="Enter Example 2 output"><br>
+            <input type="text" class="inputs"  placeholder="Enter Example 2 Explanation"><br>
+    
+        </div>
+    </center> -->
+
+
+    <div class="solution">
+        
+    </div>
+</body>
+</html>
+<script>
+    var count=1;
+    var exampcode=' <div class="inputsec" id="inps"><p class="par">Example Goes Here</p><input type="text" class="inputs" placeholder="Enter Example input"><br><input type="text" class="inputs"  placeholder="Enter Example output"><br><input type="text" class="inputs"  placeholder="Enter Example Explanation"><br></div>';
+    function addexample(){
+        console.log(1)
+        var newdiv = document.createElement('div');
+        newdiv.innerHTML=exampcode;
+        var inp=document.getElementById('totinps');
+        
+        inp.appendChild(newdiv)
+    
+    }
+</script>
