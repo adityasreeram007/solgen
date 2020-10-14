@@ -262,7 +262,8 @@
     }
     function toggle(id){
         var x=document.getElementById(id);
-        
+
+        console.log(id)
         if (x.className.charAt(8)==='l'){
             var c=document.getElementById('codearea'+id.charAt(id.length-1))
             c.setAttribute("style","background-color:azure;color: rgb(36, 37, 51);");
@@ -279,7 +280,7 @@
     function addsol(){
         solcount+=1;
         algosteps.push(1)
-       var code= '<div class="solbox" id="solboxin'+solcount+'"><div class="solhead">Solution '+solcount+'</div><div class="algo" id="algo'+solcount+'"><div class="par">Algorithm goes here</div><input type="text" class="appname" placeholder="Approach type"/><div class="par" style="margin-top: 1%;margin-left: 12%;">Steps goes Here<button class="btn btnx btn-danger" id="stepadd'+solcount+'" onclick="addsteps(this.id)">+</button><button class="btny btn btn-primary" id="stepdel'+solcount+'" onclick="delsteps(this.id)">-</button></div><input class="inputs" id="alg'+solcount+'step1" style="margin-left: 0%;width:90%;" placeholder="Enter Step 1 here"/></div><div class="code"><div class="par">Python Code</div><textarea class="codearea" id="codearea1" style="background-color: rgb(36, 37, 51);color: azure;"></textarea><button class="btn btn-light" id="togglebutton1"  style="margin-top: 1%;" onclick="toggle(this.id)">Switch to light mode</button></div> <div class="time"><div class="par">Time Complexity</div><div class="complex"><input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) time complexity of the Algo"/></div><input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/></div><div class="space"><div class="par">Space Complexity</div><div class="complex"> <input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) Space complexity of the Algo"/></div><input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/></div></div></div>'
+       var code= '<div class="solbox" id="solboxin'+solcount+'"><div class="solhead">Solution '+solcount+'</div><div class="algo" id="algo'+solcount+'"><div class="par">Algorithm goes here</div><input type="text" class="appname" placeholder="Approach type"/><div class="par" style="margin-top: 1%;margin-left: 12%;">Steps goes Here<button class="btn btnx btn-danger" id="stepadd'+solcount+'" onclick="addsteps(this.id)">+</button><button class="btny btn btn-primary" id="stepdel'+solcount+'" onclick="delsteps(this.id)">-</button></div><input class="inputs" id="alg'+solcount+'step1" style="margin-left: 0%;width:90%;" placeholder="Enter Step 1 here"/></div><div class="code"><div class="par">Python Code</div><textarea class="codearea" id="codearea'+solcount+'" style="background-color: rgb(36, 37, 51);color: azure;"></textarea><button class="btn btn-light" id="togglebutton'+solcount+'"  style="margin-top: 1%;" onclick="toggle(this.id)">Switch to light mode</button></div> <div class="time"><div class="par">Time Complexity</div><div class="complex"><input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) time complexity of the Algo"/></div><input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/></div><div class="space"><div class="par">Space Complexity</div><div class="complex"> <input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) Space complexity of the Algo"/></div><input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/></div></div></div>'
        var newdiv = document.createElement('center');
        newdiv.setAttribute('id',id='solbox'+solcount)
         
