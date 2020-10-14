@@ -18,13 +18,13 @@
         }
         .heading{
             padding-top: 1.2%;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            font-size: 40px;;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 35px;;
         }
         .probhead{
             margin-top:2%;
             width: 100%;
-            margin-left: 20%;
+            margin-left: 10%;
             
         }
         .smallinp{
@@ -38,7 +38,7 @@
         .largeinp{
             border-radius: 5px;
             
-            width:60%;
+            width:80%;
             height:120px;
             text-align: center;
 
@@ -46,16 +46,17 @@
         ::placeholder{
             text-align: center;
             font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
         .dificulty{
             margin-top: 2%;
-            margin-left: 20%;
+            margin-left: 10%;
         }
         .inputsec{
             margin-top: 2%;
             border-style: solid;
             border-color: black;
-            width:60%;
+            width:80%;
             padding-bottom: 5%;
         }
       .probstate{
@@ -69,7 +70,7 @@
         height:40px;
       }
       .exp{
-          margin-left:20%;
+          margin-left:10%;
           margin-top: 2%;
           font-size: 40px;
       }
@@ -90,6 +91,50 @@
       }
       .par{
           margin-top:7%;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          font-size: 20px;;
+      }
+      .solbox{
+          border-style:solid;
+          width:80%;
+          padding-bottom: 2%;
+          margin-top: 2%;
+      }
+      .appname{
+        border-radius: 5px;
+           
+           width:30%;
+           height:40px;
+           text-align: center;
+           margin-left:-60%;
+           margin-top: 2%;
+           
+
+      }
+      .algo,.time,.space{
+          border-style: solid;
+          padding-bottom: 5%;
+          width:90%;
+          margin-top: 3%;;
+      }
+      .code{
+          margin-top:3%;
+          border-style:solid;
+          width:90%;
+          padding-bottom: 5%;
+
+      }
+      .codearea{
+          width:90%;
+          min-height: 500px;
+          margin-top: 2%;
+          border-color:rgb(17, 15, 37);
+          white-space: nowrap;
+      }
+      .solhead{
+          margin-top: 2%;
+          font-size: 25px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       }
 </style>
 <body >
@@ -125,13 +170,49 @@
 
 
 
-    <div class="solution">
-        
+    <div class="solution" id="solution">
+        <p class="exp">Solutions<button class="btn btnx btn-danger" onclick="addsol()">+</button><button class="btny btn btn-primary" onclick="delsol()">-</button></p>
+        <center id="solbox1">
+        <div class="solbox" id="solboxin1">
+            <div class="solhead">Solution 1</div>
+            <div class="algo" id="algo1"><div class="par">Algorithm goes here</div>
+                <input type="text" class="appname" placeholder="Approach type"/>
+                <div class="par" style="margin-top: 1%;margin-left: 12%;">Steps goes Here<button class="btn btnx btn-danger" id="stepadd1" onclick="addsteps(this.id)">+</button><button class="btny btn btn-primary" id="stepdel1" onclick="delsteps(this.id)">-</button></div>
+                <input class="inputs" id="alg1step1" style="margin-left: 0%;width:90%;" placeholder="Enter Step 1 here"/>
+
+
+            </div>
+            <div class="code">
+                <div class="par">Python Code</div>
+                <textarea class="codearea" id="codearea1" style="background-color: rgb(36, 37, 51);color: azure;"></textarea>
+                <button class="btn btn-light" id="togglebutton1"  style="margin-top: 1%;" onclick="toggle(this.id)">Switch to light mode</button>
+            </div>
+            <div class="time">
+                <div class="par">Time Complexity</div>
+                <div class="complex">
+                    
+                <input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) time complexity of the Algo"/></div>
+                <input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/>
+                
+            </div>
+            <div class="space">
+                <div class="par">Space Complexity</div>
+                <div class="complex">
+                    
+                <input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) Space complexity of the Algo"/></div>
+                <input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/>
+                
+            </div>
+            </div>
+        </div>
+        </center>
     </div>
 </body>
 </html>
 <script>
     var count=1;
+    var solcount=1;
+    var algosteps=[1]
    function addexample(){
         console.log(1)
         var exampcode=' <div class="inputsec" id="inps"><p class="par">Example Goes Here</p><input type="text" class="inputs" placeholder="Enter Example input"><br><input type="text" class="inputs"  placeholder="Enter Example output"><br><input type="text" class="inputs"  placeholder="Enter Example Explanation"><br></div>';
@@ -153,6 +234,71 @@
         console.log(x)
         inp.removeChild(x);
         
+    }
+    function addsteps(id){
+        
+        console.log(id)
+        var pos=parseInt(id.charAt(id.length-1))
+        algosteps[pos-1]+=1
+        var newdiv = document.createElement('input');
+        newdiv.setAttribute("id", 'alg'+pos+'step'+algosteps[pos-1]);
+        newdiv.setAttribute("class","inputs")
+        newdiv.setAttribute("style", 'margin-left: 0%;width:90%;');
+        newdiv.setAttribute("placeholder", 'Enter Step '+algosteps[pos-1]+' here');
+        
+        var inp=document.getElementById('algo'+pos)
+        inp.appendChild(newdiv)
+    }
+    function delsteps(id){
+        
+        console.log(id)
+        var pos=parseInt(id.charAt(id.length-1))
+        if (algosteps[pos-1]>1){
+        var inp=document.getElementById('algo'+pos)
+        var del=document.getElementById('alg'+pos+'step'+algosteps[pos-1])
+        algosteps[pos-1]-=1
+        inp.removeChild(del)
+        }
+    }
+    function toggle(id){
+        var x=document.getElementById(id);
+        
+        if (x.className.charAt(8)==='l'){
+            var c=document.getElementById('codearea'+id.charAt(id.length-1))
+            c.setAttribute("style","background-color:azure;color: rgb(36, 37, 51);");
+            x.setAttribute("class","btn btn-dark")
+            x.textContent="Switch to Dark Mode"
+        }
+        else{
+            var c=document.getElementById('codearea'+id.charAt(id.length-1))
+            c.setAttribute("style","background-color:rgb(36, 37, 51) ;color: azure;");
+            x.setAttribute("class","btn btn-light")
+            x.textContent="Switch to Light Mode"
+        }
+    }
+    function addsol(){
+        solcount+=1;
+        algosteps.push(1)
+       var code= '<div class="solbox" id="solboxin'+solcount+'"><div class="solhead">Solution '+solcount+'</div><div class="algo" id="algo'+solcount+'"><div class="par">Algorithm goes here</div><input type="text" class="appname" placeholder="Approach type"/><div class="par" style="margin-top: 1%;margin-left: 12%;">Steps goes Here<button class="btn btnx btn-danger" id="stepadd'+solcount+'" onclick="addsteps(this.id)">+</button><button class="btny btn btn-primary" id="stepdel'+solcount+'" onclick="delsteps(this.id)">-</button></div><input class="inputs" id="alg'+solcount+'step1" style="margin-left: 0%;width:90%;" placeholder="Enter Step 1 here"/></div><div class="code"><div class="par">Python Code</div><textarea class="codearea" id="codearea1" style="background-color: rgb(36, 37, 51);color: azure;"></textarea><button class="btn btn-light" id="togglebutton1"  style="margin-top: 1%;" onclick="toggle(this.id)">Switch to light mode</button></div> <div class="time"><div class="par">Time Complexity</div><div class="complex"><input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) time complexity of the Algo"/></div><input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/></div><div class="space"><div class="par">Space Complexity</div><div class="complex"> <input type="text" class="appname" style="margin-left: -30%;" placeholder="O(n) Space complexity of the Algo"/></div><input type="text" class="inputs" style="height: 100px;" placeholder="Explanation"/></div></div></div>'
+       var newdiv = document.createElement('center');
+       newdiv.setAttribute('id',id='solbox'+solcount)
+        
+        newdiv.innerHTML=code;
+        var inp=document.getElementById('solution');
+        
+        inp.appendChild(newdiv)
+        
+    
+    
+    }
+    function delsol(){
+        var inp=document.getElementById('solution');
+        var sol=document.getElementById('solbox'+solcount);
+        if (solcount>=2){
+        solcount-=1
+        algosteps.pop()
+        inp.removeChild(sol)
+        }
     }
 </script>
 
